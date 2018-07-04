@@ -62,34 +62,6 @@ ENTRYPOINT
 - 让容器以应用程序或服务的形式运行
 - 不会被忽略，一定会执行
 
-[kubernetes]
-name=Kubernetes
-baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/
-enabled=1
-gpgcheck=0
-
-提前拉取镜像
-kubeadm config images pull
-[config/images] Pulled k8s.gcr.io/kube-apiserver-amd64:v1.11.0
-[config/images] Pulled k8s.gcr.io/kube-controller-manager-amd64:v1.11.0
-[config/images] Pulled k8s.gcr.io/kube-scheduler-amd64:v1.11.0
-[config/images] Pulled k8s.gcr.io/kube-proxy-amd64:v1.11.0
-[config/images] Pulled k8s.gcr.io/pause-amd64:3.1
-[config/images] Pulled k8s.gcr.io/etcd-amd64:3.2.18
-[config/images] Pulled k8s.gcr.io/coredns:1.1.3
-
-yum install -y kubeadm-1.9.9-0.x86_64 kubelet-1.9.9-0.x86_64 kubectl-1.9.9-0.x86_64
-docker pull gcr.mirrors.ustc.edu.cn/google_containers/kube-apiserver-amd64:v1.9.4
-docker pull gcr.mirrors.ustc.edu.cn/google_containers/kube-controller-manager-amd64:v1.9.4
-docker pull gcr.mirrors.ustc.edu.cn/google_containers/kube-scheduler-amd64:v1.9.4
-docker pull gcr.mirrors.ustc.edu.cn/google_containers/kube-proxy-amd64:v1.9.4
-docker pull gcr.mirrors.ustc.edu.cn/google_containers/etcd-amd64:3.1.10
-docker pull gcr.mirrors.ustc.edu.cn/google_containers/pause-amd64:3.0
-docker pull gcr.mirrors.ustc.edu.cn/google_containers/k8s-dns-sidecar-amd64:1.14.7
-docker pull gcr.mirrors.ustc.edu.cn/google_containers/k8s-dns-kube-dns-amd64:1.14.7
-docker pull gcr.mirrors.ustc.edu.cn/google_containers/k8s-dns-dnsmasq-nanny-amd64:1.14.7
-kubeadm init --config=kubeadm-config-191.yml --ignore-preflight-errors=all
-
 测试link，这种连接方式实际环境中很少使用
 docker run -d --name test1 busybox /bin/sh -c "while true; do sleep 3600; done"
 docker run -d --name test2 --link test1 busybox /bin/sh -c "while true; do sleep 3600; done"
