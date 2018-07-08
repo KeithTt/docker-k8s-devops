@@ -47,7 +47,7 @@ CMD []
 
 使用编译型语言（例如C，Go等）编写的应用程序打包成Docker镜像，这里面的优化空间就更大了，我们以Go语言为例。
 
-假如我们有一个Go APP，假如使用普通的go image，那么我们构建出来的镜像会很大，例如这个app https://github.com/golang/example/blob/master/outyet/Dockerfile
+假如我们有一个Go APP，假如使用普通的go image，那么我们构建出来的镜像会很大，例如这个app (https://github.com/golang/example/blob/master/outyet/Dockerfile)
 
 ```bash
 FROM golang:onbuild
