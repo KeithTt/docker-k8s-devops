@@ -16,7 +16,8 @@ python                         3.6.5               a5b7afcfdcc8        2 weeks a
 python                         3.6.5-alpine        27e79c0fa4d2        2 months ago        87.4MB
 ```
 
-我们会看到，同样是3.6.5， alpine linux的docker image就小了非常非常多，是普通的python3.6.5十分之一大小，为什么呢？主要是因为为了照顾“懒人”，Python:3.6.5 image预先安装了大量python的工具和编译的头文件等，包括C的编译环境等等。
+我们会看到，同样是3.6.5， alpine linux的docker image就小了非常非常多，是普通的python3.6.5十分之一大小，为什么呢？
+主要是因为为了照顾“懒人”，Python:3.6.5 image预先安装了大量python的工具和编译的头文件等，包括C的编译环境等等。
 
 而python:3.6.5-alpine 基本上除了Linux系统必须的一些文件以外，基本只包含基本的Python运行环境，例如像 `gcc` 等工具是不会预先安装的，都是用户需要的时候自行安装。
 
@@ -47,7 +48,8 @@ CMD []
 
 使用编译型语言（例如C，Go等）编写的应用程序打包成Docker镜像，这里面的优化空间就更大了，我们以Go语言为例。
 
-假如我们有一个Go APP，假如使用普通的go image，那么我们构建出来的镜像会很大，例如这个app (https://github.com/golang/example/blob/master/outyet/Dockerfile)
+假如我们有一个Go APP，假如使用普通的go image，那么我们构建出来的镜像会很大，
+例如这个app (https://github.com/golang/example/blob/master/outyet/Dockerfile)
 
 ```bash
 FROM golang:onbuild
@@ -115,6 +117,5 @@ go-demo-muti-build   latest              1b1237a8fe0e        20 seconds ago     
 
 ## 总结
 
-所以，我们每次build自己的docker image的时候，一定要思考一下，怎么才能让我们的docker image变得更加小巧，更小的image其实也是更安全的，因为冗余的软件包少，那么漏洞就相应的少，另外小的docker image方便移动，不管是docker push还是pull，速度都很快。
-
-快看一看自己手头上的docker image，有没有优化的空间吧！
+所以，我们每次build自己的docker image的时候，一定要思考一下，怎么才能让我们的docker image变得更加小巧，
+更小的image其实也是更安全的，因为冗余的软件包少，那么漏洞就相应的少，另外小的docker image方便移动，不管是docker push还是pull，速度都很快。
