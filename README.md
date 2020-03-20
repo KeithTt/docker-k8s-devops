@@ -128,5 +128,3 @@ Kubernetes的Service
 - LoadBalancer
 - 也可以使用DNS
 ```
-
-https://gitlab-demo.com/xiaoquwl/docker-k8s-devops
